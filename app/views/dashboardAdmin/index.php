@@ -6,7 +6,9 @@
     <title>Dashboard</title>
 </head>
 <body>
-    halo ini dasbor
-    <a href="<?= BASEURL; ?>"> ke home </a>
+    <div>
+        halo ini dasbor admin
+    </div>
+    <a href="<?= BASEURL; ?>/logout"> logout </a>
 </body>
 </html>
