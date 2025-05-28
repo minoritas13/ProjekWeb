@@ -1,25 +1,15 @@
 <?php
 
-class Model_user {
-    protected $users = [
-        [
-            'username' => 'admin',
-            'password' => '1234', // sebaiknya hash di versi produksi
-            'role'     => 'admin'
-        ],
-        [
-            'username' => 'kasir',
-            'password' => '5678',
-            'role'     => 'kasir'
-        ]
-    ];
+class Model_user{
+    private $db;
+
+    public function __construct() {
+        $this->db = new Database;
+    }
 
     public function getUser($username) {
-        foreach ($this->users as $user) {
-            if ($user['username'] === $username) {
-                return $user;
-            }
-        }
-        return null;
+        $this->db->query("SELECT * FROM users WHERE username = :username");
+        $this->db->bind(':username', $username);
+        return $this->db->result(); // hanya ambil satu user
     }
 }
