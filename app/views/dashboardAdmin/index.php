@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
-<body>
-    <div>
-        halo ini dasbor admin
-    </div>
-    <a href="<?= BASEURL; ?>/logout"> logout </a>
-</body>
-</html>
+<div>
+    ini admin
+</div>
+
+<a href="<?= BASEURL; ?>/logout" class="btn btn-primary">Logout</a>
+
+<script>
+    alert("Selmat datang di admin");
+</script>
