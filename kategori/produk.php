@@ -11,8 +11,8 @@
   <!-- Header -->
   <header class="bg-white shadow px-4 py-3 d-flex justify-content-between align-items-center">
     <a href="index.php" class="d-flex align-items-center gap-2 text-decoration-none">
-     <img src="assets/logo.png" alt="logo alfagift" style="height: 32px;">
-      <span class="badge bg-danger">Kategori</span>
+     <img src="assets/logo.png" alt="logo" style="height: 32px;">
+      <span class="badge bg-success" style="background-color: #66BB6A;">Kategori</span>
     </a>
     <input type="text" placeholder="Cari produk..." class="form-control w-50">
     <div class="fs-3 text-secondary">🛒</div>
@@ -200,8 +200,8 @@
                 <img src='default.png' alt='Gambar Produk' style='max-height: 100%; max-width: 100%; object-fit: contain;'>
               </div>
               <p class='small fw-semibold mb-1'>{$item[0]}</p>
-              <p class='text-danger fw-bold'>{$item[1]}</p>
-              <button class='btn btn-danger btn-sm mt-2'>Beli</button>
+              <p class='text-success fw-bold' style='color: #66BB6A;'>{$item[1]}</p>
+              <button class='btn btn-success btn-sm mt-2' style='background-color: #66BB6A; border: none;'>Beli</button>
             </div>
           </div>";
         }

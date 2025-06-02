@@ -34,8 +34,8 @@
   <!-- Header -->
   <header class="bg-white shadow-sm px-4 py-3 d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center gap-2">
-      <img src="assets/logo.png" alt="logo alfagift" style="height: 32px;">
-      <span class="badge bg-danger">Kategori</span>
+      <img src="assets/logo.png" alt="logo" style="height: 32px;">
+      <span class="badge" style="background-color: #66BB6A;">Kategori</span>
     </div>
     <input type="text" class="form-control w-50" placeholder="Temukan produk favoritmu disini">
     <div class="fs-3 text-secondary">🛒</div>
@@ -71,7 +71,7 @@
             echo "<li class='group mb-2'>";
             echo "<div class='p-2 rounded hover-bg-light fw-medium' style='cursor:pointer;'>$nama</div>";
             echo "<div class='submenu rounded'>";
-            echo "<h6 class='text-danger fw-semibold mb-2'>$nama</h6>";
+            echo "<h6 class='fw-semibold mb-2' style='color: #66BB6A;'>$nama</h6>";
             echo "<ul class='list-unstyled small text-dark'>";
             foreach ($sub as $s) {
               $link = "produk.php?kategori=" . urlencode($s);
