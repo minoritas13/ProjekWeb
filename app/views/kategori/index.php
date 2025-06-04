@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Kategori - Alfagift Clone</title>
+  <title>Kategori</title>
   <!-- Bootstrap 5.3.6 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
@@ -30,17 +30,6 @@
   </style>
 </head>
 <body class="bg-light">
-
-  <!-- Header -->
-  <header class="bg-white shadow-sm px-4 py-3 d-flex justify-content-between align-items-center">
-    <div class="d-flex align-items-center gap-2">
-      <img src="assets/logo.png" alt="logo" style="height: 32px;">
-      <span class="badge" style="background-color: #66BB6A;">Kategori</span>
-    </div>
-    <input type="text" class="form-control w-50" placeholder="Temukan produk favoritmu disini">
-    <div class="fs-3 text-secondary">🛒</div>
-  </header>
-
   <!-- Main Content -->
   <main class="d-flex min-vh-100">
 
@@ -92,10 +81,6 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-white text-center text-muted py-3 mt-5 border-top">
-    &copy; 2025 Alfagift Clone - Didesain oleh Della
-  </footer>
 
 </body>
 </html>

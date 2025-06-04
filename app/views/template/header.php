@@ -3,36 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title><?= $data['title'];?></title>
-    <link href="<?= BASEURL; ?>/css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-white bg-white shadow-sm">
-  <div class="container-fluid">
+<nav class="bg-white shadow">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
 
-    <!-- Logo -->
-    <a class="navbar-brand" href="<?= BASEURL; ?>">
-      <img src="img/alfagift-logo.png" alt="Logo" height="30">
-    </a>
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="<?= BASEURL; ?>">
+          <img class="h-8" src="<?= BASEURL; ?>/img/default.png" alt="Logo">
+        </a>
+      </div>
 
-    <!-- Kategori -->
-    <a class="nav-link" href="#"><i class="bi bi-grid"></i> Kategori</a>
+      <!-- Kategori -->
+      <a href="#" class="text-gray-700 hover:text-gray-900 font-medium flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+        Kategori
+      </a>
 
-    <!-- Search -->
-    <form class="d-flex mx-3 w-50">
-      <input class="form-control rounded-0" type="search" placeholder="Temukan produk favoritmu disini" aria-label="Search">
-      <button class="btn btn-success rounded-0" type="submit"><i class="bi bi-search"></i></button>
-    </form>
+      <!-- Search -->
+      <form class="flex w-1/2 mx-4">
+        <input type="search" class="flex-grow border border-gray-300 px-4 py-2 rounded-l-md focus:outline-none" placeholder="Temukan produk favoritmu disini" />
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-r-md hover:bg-green-700">
+          🔍
+        </button>
+      </form>
 
-    <!-- Right Side -->
-    <div class="d-flex align-items-center gap-3">
-      <a class="nav-link" href="#">Brand</a>
-      <a class="nav-link" href="#">Promo</a>
-      <a class="nav-link" href="#"><i class="bi bi-cart"></i></a>
-      <span class="vr"></span>
-      <a class="nav-link" href="#">Daftar</a>
-      <a class="nav-link" href="#">Masuk</a>
+      <!-- Right Side -->
+      <div class="flex items-center gap-4">
+        <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Brand</a>
+        <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Promo</a>
+        <a href="#" class="text-gray-700 hover:text-gray-900">
+          🛒
+        </a>
+        <div class="w-px h-6 bg-gray-300"></div>
+        <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Daftar</a>
+        <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Masuk</a>
+      </div>
+
     </div>
-
   </div>
 </nav>
+
