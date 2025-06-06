@@ -1,27 +1,32 @@
 <?php
 
-class Model_barang {
+class Model_barang
+{
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database;
     }
 
     // Ambil semua barang
-    public function getAllBarang() {
+    public function getAllBarang()
+    {
         $this->db->query("SELECT * FROM barang");
         return $this->db->resultSet();
     }
 
     // Ambil satu barang berdasarkan ID
-    public function getBarangById($id) {
+    public function getBarangById($id)
+    {
         $this->db->query("SELECT * FROM barang WHERE id = :id");
         $this->db->bind(':id', $id);
         return $this->db->result();
     }
 
     // Tambah data barang
-    public function tambahBarang($data) {
+    public function tambahBarang($data)
+    {
         $query = "INSERT INTO barang (nama, harga, stok) VALUES (:nama, :harga, :stok)";
         $this->db->query($query);
         $this->db->bind(':nama', $data['nama']);
@@ -31,7 +36,8 @@ class Model_barang {
     }
 
     // Update data barang
-    public function updateBarang($data) {
+    public function updateBarang($data)
+    {
         $query = "UPDATE barang SET nama = :nama, harga = :harga, stok = :stok WHERE id = :id";
         $this->db->query($query);
         $this->db->bind(':id', $data['id']);
@@ -42,9 +48,17 @@ class Model_barang {
     }
 
     // Hapus data barang
-    public function hapusBarang($id) {
+    public function hapusBarang($id)
+    {
         $this->db->query("DELETE FROM barang WHERE id = :id");
         $this->db->bind(':id', $id);
         return $this->db->execute();
+    }
+
+    public function getBarangByKategori($kategori_id)
+    {
+        $this->db->query("SELECT * FROM barang WHERE kategori_id = :id");
+        $this->db->bind(':id', $kategori_id);
+        return $this->db->resultSet();
     }
 }

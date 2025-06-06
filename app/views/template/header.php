@@ -29,7 +29,7 @@
       <!-- Search -->
       <form class="flex w-1/2 mx-4">
         <input type="search" class="flex-grow border border-gray-300 px-4 py-2 rounded-l-md focus:outline-none" placeholder="Temukan produk favoritmu disini" />
-        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-r-md hover:bg-green-700">
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-r-md hover:bg-green-700">
           🔍
         </button>
       </form>
@@ -43,7 +43,7 @@
         </a>
         <div class="w-px h-6 bg-gray-300"></div>
         <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Daftar</a>
-        <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Masuk</a>
+        <a href="<?= BASEURL; ?>/dashboardKasir" class="text-gray-700 hover:text-gray-900 font-medium">Masuk</a>
       </div>
 
     </div>

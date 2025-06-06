@@ -15,18 +15,4 @@ class Kategori extends Controller{
         }
         
     }
-
-    public function produk(){
-        session_start();
-        $data['title'] = 'produk-kategori';
-
-        if(!isset($_SESSION['user'])){
-            header('Location: ' . BASEURL);    
-        }else{
-            $this->view('template/header', $data);
-            $this->view('kategori/produk');
-            $this->view('template/footer');
-        }
-        
-    }
 }
