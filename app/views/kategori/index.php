@@ -1,64 +1,33 @@
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Kategori</title>
-</head>
-
-<body class="bg-light">
-  <!-- Main Content -->
-  <main class="d-flex min-vh-100">
-
-    <!-- Sidebar Kategori -->
-    <aside class="w-25 bg-white shadow-sm p-4">
-      <h2 class="h6 fw-semibold mb-4">Kategori</h2>
-      <ul class="list-unstyled small text-secondary">
-        <?php
-        $kategori = [
-          "Kebutuhan Dapur" => [
-            "Perlengkapan Dapur & Ruang Makan",
-            "Bahan Masakan",
-            "Bahan Roti & Kue",
-            "Bahan Puding & Agar-Agar"
-          ],
-          "Kebutuhan Ibu & Anak" => ["Popok Bayi", "Susu Bayi", "Sabun Bayi"],
-          "Kebutuhan Rumah" => ["Alat Kebersihan", "Pewangi", "Tisu"],
-          "Makanan" => ["Mie Instan", "Cemilan", "Biskuit", "Permen"],
-          "Minuman" => ["Air Mineral", "Kopi", "Teh", "Susu"],
-          "Produk Segar & Beku" => ["Makanan Beku", "Sayur Segar", "Buah Segar", "Daging"],
-          "Personal Care" => ["Shampo", "Sabun Mandi", "Pasta Gigi", "Deodoran"],
-          "Kebutuhan Kesehatan" => ["Masker", "Obat-obatan", "Vitamin"],
-          "Lifestyle" => ["Alat Tulis", "Mainan", "Elektronik Ringan"],
-          "Pet Foods" => ["Makanan Kucing", "Pasir Kucing", "Makanan Anjing"]
-        ];
-
-        foreach ($kategori as $nama => $sub) {
-          echo "<li class='group mb-2'>";
-          echo "<div class='p-2 rounded hover-bg-light fw-medium' style='cursor:pointer;'>$nama</div>";
-          echo "<div class='submenu rounded'>";
-          echo "<h6 class='fw-semibold mb-2' style='color: #66BB6A;'>$nama</h6>";
-          echo "<ul class='list-unstyled small text-dark'>";
-          foreach ($sub as $s) {
-            $link = "produk.php?kategori=" . urlencode($s);
-            echo "<li><a href='$link' class='text-primary text-decoration-none d-block py-1'>{$s}</a></li>";
-          }
-          echo "</ul>";
-          echo "</div>";
-          echo "</li>";
-        }
-        ?>
+  <div class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-lg">
+      <div class="p-4 text-lg font-semibold border-b">Kategori</div>
+      <ul class="divide-y divide-gray-200">
+        <?php foreach ($data['kategori'] as $kategori): ?>
+          <a href="<?= BASEURL ?>/kategori/produk/<?= $kategori['id']; ?>">
+            <li class="flex justify-between items-center p-4 hover:bg-gray-50 cursor-pointer">
+              <div class="flex items-center gap-3 text-red-500">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 7h18M3 12h18M3 17h18" />
+                </svg>
+                <span class="text-gray-700"><?= $kategori['nama_kategori']; ?></span>
+              </div>
+              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9 5l7 7-7 7" />
+              </svg>
+            </li>
+          </a>
+        <?php endforeach; ?>
       </ul>
     </aside>
 
-    <!-- Area Kosong -->
-    <section class="w-75 p-4">
-      <p class="text-muted">Arahkan kursor ke kategori di kiri dan klik subkategori untuk melihat produk.</p>
-    </section>
-
-  </main>
-
-
-</body>
-
-</html>
+    <!-- Konten kanan -->
+    <main class="flex-1 p-6">
+      <h1 class="text-2xl font-bold text-gray-800 mb-4">Selamat datang di toko kami</h1>
+      <p class="text-gray-600">Pilih kategori untuk melihat produk.</p>
+    </main>
+  </div>

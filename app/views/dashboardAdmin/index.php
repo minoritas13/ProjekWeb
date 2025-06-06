@@ -30,9 +30,11 @@
                 </tr>
             </thead>
             <tbody class="text-gray-700">
+                <?php $no = 1; // Initialize a counter variable 
+                ?>
                 <?php foreach ($data['barang'] as $barang): ?>
                     <tr class="hover:bg-gray-50 border-t">
-                        <td class="px-4 py-3"><?= $barang['id']; ?></td>
+                        <td class="px-4 py-3"><?= $no++; ?></td>
                         <td class="px-4 py-3"><?= $barang['nama']; ?></td>
                         <td class="px-4 py-3"><?= number_format($barang['harga'], 0, ',', '.'); ?></td>
                         <td class="px-4 py-3"><?= $barang['stok']; ?></td>
