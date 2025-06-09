@@ -7,7 +7,6 @@ class Kategori extends Controller
     {
         session_start();
         $data['title'] = 'kategori';
-
         $data['kategori'] = $this->model('Model_kategori')->getAllKategori();
 
         if (!isset($_SESSION['user'])) {
@@ -22,7 +21,6 @@ class Kategori extends Controller
     public function produk($id = null)
     {
         session_start();
-        $barangModel = $this->model('Model_barang');
 
         if (!isset($_SESSION['user'])) {
             header('Location: ' . BASEURL);
@@ -31,8 +29,10 @@ class Kategori extends Controller
 
         // jika kategori di klik
         if ($id !== null) {
-            $data['title'] = 'Edit Barang';
-            $data['barang'] = $barangModel->getBarangByKategori($id);
+            $data['title'] = 'Produk';
+            $data['title'] = 'Kategori';
+            $data['barang'] = $this->model('Model_barang')->getBarangByKategori($id);
+            $data['kategori'] = $this->model('Model_kategori')->getKategoriById($id);
 
             $this->view('template/header', $data);
             $this->view('kategori/produk', $data);

@@ -6,10 +6,6 @@ class DashboardAdmin extends Controller
     public function index()
     {
         session_start();
-        if (!isset($_SESSION['user'])) {
-            header("Location: " . BASEURL);
-            exit;
-        }
 
         $data['title'] = 'Dashboard';
         $data['kategori'] = $this->model('Model_kategori')->getAllKategori();
@@ -22,9 +18,17 @@ class DashboardAdmin extends Controller
             $data['barang'] = $this->model('Model_barang')->getBarangByKategori($id);
         }
 
-        $this->view('template/header', $data);
-        $this->view('dashboardAdmin/index', $data);
-        $this->view('template/footer');
+        if (!isset($_SESSION['user'])) {
+            header('Location: ' . BASEURL);
+        } else {
+            if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
+                header('Location: ' . BASEURL . '/main');
+                exit;
+            }
+            $this->view('template/header', $data);
+            $this->view('dashboardAdmin/index', $data);
+            $this->view('template/footer');
+        }
     }
 
     public function tambah()
