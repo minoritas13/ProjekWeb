@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grosindo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-</head>
-
 <body class="bg-gray-100">
   <div class="mt-5"></div>
 
@@ -29,9 +18,7 @@
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex gap-4 overflow-x-auto whitespace-nowrap pb-2">
         <?php foreach ($data['kategori'] as $kategori): ?>
-          <button class="bg-green-500 text-white px-4 py-2 rounded flex-shrink-0">
-            <?= $kategori['nama_kategori']; ?>
-          </button>
+          <a href="<?= BASEURL ?>/kategori/produk/<?= $kategori['id']; ?>" class="bg-green-500 text-white px-4 py-2 rounded flex-shrink-0"><?= $kategori['nama_kategori']; ?></a>
         <?php endforeach; ?>
       </div>
     </div>
@@ -51,6 +38,7 @@
               <input type="hidden" name="id" value="<?= $barang['id']; ?>">
               <input type="hidden" name="nama" value="<?= $barang['nama']; ?>">
               <input type="hidden" name="harga" value="<?= $barang['harga']; ?>">
+              <img src="<?= BASEURL . '/' . $barang['gambar']; ?>" alt="Gambar Produk" class="rounded-lg">
               <button type="submit" class="bg-green-500 text-white px-3 py-1 rounded mt-2">Beli</button>
             </form>
           </div>

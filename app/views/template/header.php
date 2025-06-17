@@ -38,16 +38,44 @@
 
         <!-- Right Side -->
         <div class="flex items-center gap-4">
-          <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Brand</a>
           <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Promo</a>
           <a href="<?= BASEURL ?>/keranjang" class="text-gray-700 hover:text-gray-900">
             🛒
           </a>
-          <div class="w-px h-6 bg-gray-300"></div>
-          <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Daftar</a>
-          <a href="<?= BASEURL; ?>/dashboardKasir" class="text-gray-700 hover:text-gray-900 font-medium">Masuk</a>
+
+          <div class="flex justify-end items-center px-6 py-4 bg-white relative text-black">
+            <!-- Profile Dropdown Button -->
+            <div id="dropdownBtn" class="flex items-center text-gray-600 ">
+              <svg class="w-6 h-6 text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd" />
+              </svg>
+              <button class="p-2 flex items-center gap-2 font-semibold focus:outline-none">Nafis</button>
+            </div>
+            <div class="relative">
+              <!-- Dropdown Menu -->
+              <div id="dropdownMenu"
+                class="absolute right-0 mt-2 w-64 bg-white rounded shadow-lg border border-gray-200 hidden z-50">
+                <div class="p-4 border-b border-gray-200">
+                  <div class="flex items-center gap-2">
+                    <i class="fas fa-user text-gray-500 text-xl"></i>
+                    <span class="font-semibold">Nafis</span>
+                  </div>
+                </div>
+                <div class="p-4">
+                  <form action="<?=BASEURL?>/logout" method="POST">
+                    <button type="submit"
+                      class="w-full border border-red-500 text-red-500 px-4 py-2 rounded hover:bg-red-50">
+                      Keluar
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
     </div>
   </nav>
+
+  <script src="<?= BASEURL ?>/js/header.js"></script>

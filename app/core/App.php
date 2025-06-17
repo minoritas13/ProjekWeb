@@ -35,6 +35,6 @@ class App {
             return explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
         }
 
-        return []; // ← ini yang penting!
+        return [];
     }
 }

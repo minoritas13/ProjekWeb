@@ -15,7 +15,7 @@ class Main extends Controller
             header('Location: ' . BASEURL);
         } else {
             if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'kasir') {
-                header('Location: ' . BASEURL . 'dashboardAdmin');
+                header('Location: ' . BASEURL . '/dashboardAdmin');
                 exit;
             }
 

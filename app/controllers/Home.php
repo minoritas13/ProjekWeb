@@ -10,7 +10,7 @@ class Home extends Controller {
         header('Location: ' . BASEURL . '/dashboardAdmin');
         exit();
     }else{
-        $this->view('template/header', $data);
+        $this->view('template/header_guest', $data);
         $this->view('home/index');
         $this->view('template/footer');
     }

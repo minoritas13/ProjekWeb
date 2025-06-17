@@ -1,3 +1,9 @@
+<head>
+    <meta charset="UTF-8">
+    <title><?= $data['title']; ?></title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
 <div class="container mx-auto px-4 py-6">
     <h1 class="text-2xl font-bold mb-6 text-gray-800"><?= $data['title']; ?></h1>
 

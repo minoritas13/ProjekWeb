@@ -25,7 +25,6 @@ class DashboardAdmin extends Controller
                 header('Location: ' . BASEURL . '/main');
                 exit;
             }
-            $this->view('template/header', $data);
             $this->view('dashboardAdmin/index', $data);
             $this->view('template/footer');
         }
@@ -35,33 +34,48 @@ class DashboardAdmin extends Controller
     {
         session_start();
 
-        // Cek apakah user sudah login
+        // Cek apakah user admin
         if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             header('Location: ' . BASEURL);
             exit;
         }
 
-        // Jika data dikirim via POST (form disubmit)
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nama  = $_POST['nama'];
             $harga = $_POST['harga'];
             $stok  = $_POST['stok'];
 
-            // Simpan ke database melalui model
-            $this->model('Model_barang')->tambahBarang([
-                'nama'  => $nama,
-                'harga' => $harga,
-                'stok'  => $stok
-            ]);
+            // Cek apakah file gambar diupload
+            if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] === 0) {
+                $gambar = $_FILES['gambar'];
+                $namaFile = time() . '_' . basename($gambar['name']);
+                $lokasi = 'img/' . $namaFile;
 
-            // Redirect setelah insert
-            header('Location: ' . BASEURL . '/dashboardAdmin'); // arahkan ke halaman daftar barang
-            exit;
+                // Pindahkan file ke folder img/
+                if (move_uploaded_file($gambar['tmp_name'], $lokasi)) {
+                    $sukses = $this->model('Model_barang')->tambahBarang([
+                        'nama' => $nama,
+                        'harga' => $harga,
+                        'stok' => $stok,
+                        'gambar' => $lokasi
+                    ]);
+
+                    if ($sukses) {
+                        header('Location: ' . BASEURL . '/dashboardAdmin');
+                        exit;
+                    } else {
+                        echo "Gagal menyimpan ke database.";
+                    }
+                } else {
+                    echo "Gagal upload gambar.";
+                }
+            } else {
+                echo "Tidak ada gambar yang diupload atau terjadi error upload.";
+            }
         }
 
         // Jika bukan POST, tampilkan form tambah
         $data['title'] = 'Tambah Barang';
-        $this->view('template/header', $data);
         $this->view('dashboardAdmin/tambah', $data);
         $this->view('template/footer');
     }
@@ -72,38 +86,68 @@ class DashboardAdmin extends Controller
         session_start();
         $barangModel = $this->model('Model_barang');
 
-        if (!isset($_SESSION['user'])) {
+        if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             header('Location: ' . BASEURL);
             exit;
         }
 
-        // Jika tombol "Hapus" ditekan via POST
+        // Hapus barang jika tombol hapus diklik
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['hapus'])) {
             $barangModel->hapusBarang($_POST['id']);
             header('Location: ' . BASEURL . '/dashboardAdmin');
             exit;
         }
 
-        // Jika form "Update" dikirim
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
-            $dataUpdate = [
-                'id' => $_POST['id'],
-                'nama' => $_POST['nama'],
-                'harga' => $_POST['harga'],
-                'stok' => $_POST['stok']
-            ];
+        // Update data barang
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nama  = $_POST['nama'];
+            $harga = $_POST['harga'];
+            $stok  = $_POST['stok'];
+            $id    = $_POST['id'];
+            $gambarLama = $_POST['gambar_lama'];
 
-            $barangModel->updateBarang($dataUpdate);
-            header('Location: ' . BASEURL . '/dashboardAdmin');
-            exit;
+            $gambarPath = $gambarLama;
+
+            // Jika upload gambar baru
+            if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] === 0) {
+                $gambar = $_FILES['gambar'];
+                $namaFile = time() . '_' . basename($gambar['name']);
+                $lokasi = 'img/' . $namaFile;
+
+                if (move_uploaded_file($gambar['tmp_name'], $lokasi)) {
+                    $gambarPath = $lokasi;
+
+                    // Hapus gambar lama dari server jika ada
+                    if (file_exists($gambarLama)) {
+                        unlink($gambarLama);
+                    }
+                } else {
+                    echo "Gagal upload gambar.";
+                    exit;
+                }
+            }
+
+            // Update ke database
+            $berhasil = $barangModel->updateBarang([
+                'id'    => $id,
+                'nama'  => $nama,
+                'harga' => $harga,
+                'stok'  => $stok,
+                'gambar' => $gambarPath
+            ]);
+
+            if ($berhasil) {
+                header('Location: ' . BASEURL . '/dashboardAdmin');
+                exit;
+            } else {
+                echo "Gagal menyimpan ke database.";
+            }
         }
 
-        // Jika ID barang diklik untuk edit
+        // Tampilkan form edit
         if ($id !== null) {
             $data['title'] = 'Edit Barang';
             $data['barang'] = $barangModel->getBarangById($id);
-
-            $this->view('template/header', $data);
             $this->view('dashboardAdmin/edit', $data);
             $this->view('template/footer');
         }

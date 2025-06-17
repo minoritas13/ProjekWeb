@@ -27,25 +27,30 @@ class Model_barang
     // Tambah data barang
     public function tambahBarang($data)
     {
-        $query = "INSERT INTO barang (nama, harga, stok) VALUES (:nama, :harga, :stok)";
+        $query = "INSERT INTO barang (nama, harga, stok, gambar) VALUES (:nama, :harga, :stok, :gambar)";
         $this->db->query($query);
         $this->db->bind(':nama', $data['nama']);
         $this->db->bind(':harga', $data['harga']);
         $this->db->bind(':stok', $data['stok']);
+        $this->db->bind(':gambar', $data['gambar']);
         return $this->db->execute();
     }
+
+
 
     // Update data barang
     public function updateBarang($data)
     {
-        $query = "UPDATE barang SET nama = :nama, harga = :harga, stok = :stok WHERE id = :id";
+        $query = "UPDATE barang SET nama = :nama, harga = :harga, stok = :stok, gambar = :gambar WHERE id = :id";
         $this->db->query($query);
         $this->db->bind(':id', $data['id']);
         $this->db->bind(':nama', $data['nama']);
         $this->db->bind(':harga', $data['harga']);
         $this->db->bind(':stok', $data['stok']);
+        $this->db->bind(':gambar', $data['gambar']);
         return $this->db->execute();
     }
+
 
     // Hapus data barang
     public function hapusBarang($id)

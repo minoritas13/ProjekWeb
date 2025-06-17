@@ -1,13 +1,14 @@
 <h2 class="text-xl font-bold mb-4">Keranjang Belanja</h2>
 
-<table class="min-w-full bg-white border border-gray-300">
+<table class="min-w-full bg-white border border-gray-300 table-fixed">
     <thead>
         <tr class="bg-gray-100">
-            <th class="px-4 py-2">Nama</th>
-            <th class="px-4 py-2">Harga</th>
-            <th class="px-4 py-2">Jumlah</th>
-            <th class="px-4 py-2">Subtotal</th>
-            <th class="px-4 py-2">Aksi</th>
+            <th class="w-2/5 px-4 py-2 text-left">Nama</th>
+            <th class="w-1/5 px-4 py-2 text-left">Harga</th>
+            <th class="w-1/5 px-4 py-2 text-left">Jumlah</th>
+            <th class="w-1/5 px-4 py-2 text-left">Subtotal</th>
+            <th class="w-1/5 px-4 py-2 text-left">Aksi</th>
+
         </tr>
     </thead>
     <tbody>
@@ -42,16 +43,13 @@
     </tfoot>
 </table>
 
-<div>
-    <form action="<?= BASEURL ?>/keranjang/transaksi" method="POST">
-        <input type="hidden" name="id" value="<?= $barang['id']; ?>">
-        <input type="hidden" name="nama" value="<?= $barang['nama']; ?>">
-        <input type="hidden" name="harga" value="<?= $barang['harga']; ?>">
-        <input type="hidden" name="jumlah" value="1">
-        <button type="submit"
-            class="mt-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition-all duration-200">
-            <i class="fas fa-cart-plus mr-1"></i> Beli
-        </button>
-    </form>
-
+<!-- Tombol Beli / Checkout -->
+<!-- Checkout semua keranjang -->
+<div class="m-4">
+  <form action="<?= BASEURL ?>/keranjang/transaksi" method="POST">
+    <button type="submit"
+      class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition-all duration-200">
+      <i class="fas fa-cart-plus mr-1"></i> Checkout Sekarang
+    </button>
+  </form>
 </div>
